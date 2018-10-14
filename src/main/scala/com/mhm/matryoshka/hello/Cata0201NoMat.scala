@@ -33,14 +33,14 @@ object Cata0201NoMat extends App {
 
   def list_cata[X,U](lc: List_cata[X,U])(l:MList[X]): U = {
     l match {
-      case _:MNil[X] => lc.a
+      case MNil => lc.a
       case x:MCons[X] => lc.f(x.h, list_cata(lc)(x.t))
     }
   }
 
   def prod = list_cata[Int,Int](List_cata(1, _ * _ )) _
 
-  val lst = MCons[Int](1, MCons[Int](3, MCons[Int](9, MNil[Int]())))
+  val lst = MCons[Int](1, MCons[Int](3, MCons[Int](9, MNil)))
 
   println(prod(lst)) // 27
 

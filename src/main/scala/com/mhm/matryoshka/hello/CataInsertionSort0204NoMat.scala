@@ -23,19 +23,19 @@ object CataInsertionSort0204NoMat extends App {
 
   def list_cata[X,U](lc: List_cata[X,U])(l:MList[X]): U = {
     l match {
-      case _:MNil[X] => lc.a
+      case MNil => lc.a
       case x:MCons[X] => lc.f(x.h, list_cata(lc)(x.t))
     }
   }
 
   def insert(x:Int, list: MList[Int]): MList[Int] = list match {
-    case _:MNil[Int] => MCons(x, MNil[Int]())
+    case MNil => MCons(x, MNil)
     case MCons(h,t) => if (x < h) MCons(x, MCons(h, t)) else MCons(h, insert(x,t))
   }
 
-  val insertionSort = list_cata[Int, MList[Int]](List_cata[Int, MList[Int]](MNil[Int](), insert)) _
+  val insertionSort = list_cata[Int, MList[Int]](List_cata[Int, MList[Int]](MNil, insert)) _
 
   // 5 2 9 6
-  println(insertionSort(MCons(5, MCons(2, MCons(9, MCons(6, MNil()))))))  //2 5 6 9
+  println(insertionSort(MCons(5, MCons(2, MCons(9, MCons(6, MNil))))))  //2 5 6 9
 
 }

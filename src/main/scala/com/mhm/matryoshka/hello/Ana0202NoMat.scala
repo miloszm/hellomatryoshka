@@ -34,7 +34,7 @@ object Ana0202NoMat extends App {
 
   def list_ana[X,U](fun: U => Either[Unit, (X,U)])(u : U): MList[X] = {
     fun(u) match {
-      case Left(_) => MNil[X]()
+      case Left(_) => MNil
       case Right((x,l)) => MCons[X](x, list_ana(fun)(l))
     }
   }
