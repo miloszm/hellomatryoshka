@@ -7,8 +7,7 @@ import slamdata.Predef._
 
 import scalaz.Functor
 
-object HelloListCata extends App {
-
+object Cata0201Mat extends App {
 
   sealed trait MList[A]
   final case class MCons[A](h:Int, t:A) extends MList[A]
@@ -28,7 +27,6 @@ object HelloListCata extends App {
     case MCons(h, _) => println(s"visiting $h")
   }
 
-
   mlist.cata(printLabels)
 
   val prod: Algebra[MList, Int] = {
@@ -36,7 +34,7 @@ object HelloListCata extends App {
     case MCons(h, t) => h * t
   }
 
-  println(mlist.cata(prod))
+  println(mlist.cata(prod)) // 28
 
 
 }

@@ -9,6 +9,12 @@ import slamdata.Predef._
 import scalaz.Functor
 
 
+/**
+  * basic catamorphism example from documentation
+  * to see that Matryoshka is included properly
+  */
+
+
 object HelloMatryoshka extends App {
 
 
